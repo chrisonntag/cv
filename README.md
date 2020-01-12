@@ -1,7 +1,7 @@
 # Curriculum Vitae
 
-This is my CV made with the wonderful LaTeX template from [Zeyi Fan](https://github.com/fanzeyi).
-You can preview it [here](./cv.pdf).
+This is my CV made with the wonderful LaTeX template from [Zeyi Fan](https://github.com/fanzeyi). 
+You can preview it [here](./dist/cv.pdf).
 
 ## Font
 
