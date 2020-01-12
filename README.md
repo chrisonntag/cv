@@ -1,17 +1,13 @@
-# cv
+# Curriculum Vitae
 
-This is a cv template I wrote and designed for myself. I decided I will open
-source it once I got an internship offer. So here it is.
-
+This is my CV made with the wonderful LaTeX template from [Zeyi Fan](https://github.com/fanzeyi).
 You can preview it [here](./cv.pdf).
 
 ## Font
 
-This template uses [Raleway](https://github.com/impallari/Raleway) as main font.
-They are also open source!
+This template uses [Raleway](https://github.com/impallari/Raleway) as the main font, which is also open source!
 
 ## Build
-
 Use latexmk:
 
     latexmk -xelatex
