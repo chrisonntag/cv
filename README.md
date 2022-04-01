@@ -10,7 +10,7 @@ This template uses [Raleway](https://github.com/impallari/Raleway) as the main f
 ## Build
 Use latexmk:
 
-    latexmk -xelatex
+    latexmk -xelatex -outdir=dist [-pvc for live updates]
 
 ## Notes
 
