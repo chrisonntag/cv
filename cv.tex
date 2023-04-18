@@ -16,15 +16,24 @@
 % This work consists of only the file cv.tex
 
 \documentclass{article}
-\usepackage[top=.4in, bottom=.0in, left=3in, right=0.4in,marginparwidth=2.5in]{geometry}
+\usepackage[top=4.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+%\usepackage[top=.4in, bottom=.0in, left=.4in, right=0.4in,marginparwidth=2.5in]{geometry}
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{pstricks}
 \usepackage{amssymb}
 \usepackage{paralist}
+
+\usepackage{xifthen}
+\usepackage{lipsum}
+\usepackage{everyshi}
+
+
 
 \usepackage[pdfauthor={Christoph Sonntag},
             pdftitle={Christoph Sonntag's Resume},
@@ -67,15 +76,12 @@
 
 \setmainfont{Raleway-v4020 Regular}
 
-
-% Styles
-\newcommand{\name}[2]{
-    \begin{center}
-        \Huge{
-            \textcolor{dark}{\ralewayeb{#1 #2}}
-        }
-    \end{center}
-}
+\newcommand*\name{Christoph Sonntag}
+\newcommand*\email{cv@snn.tg}
+\newcommand*\phone{+49 151 70097024}
+\newcommand*\website{https://christoph.snn.tg}
+\newcommand*\github{chrisonntag}
+\newcommand*\linkedin{christophsonntag}
 
 \newcommand{\tagline}[1]{
     \begin{center}
@@ -97,7 +103,7 @@
 {}
 [{\titlerule[0.8pt]}]
 
-\titlespacing*{\section}{0pt}{4pt}{10pt}
+\titlespacing*{\section}{0pt}{4pt}{5pt}
 
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{1mm}
@@ -122,107 +128,103 @@
     \end{pspicture}
 }
 
+\setlength{\columnsep}{-5cm}
 \newcommand{\block}[3]{
-    {\large\ralewayb #1}
 
-    \ralewaym{\color{lightdark}#2}
-    \vspace{.3em}
+    \begin{multicols}{2}
+      {
+        \large{\ralewayb #1}\\
+        \small\ralewaym{\color{lightdark}#2}
+      }
 
-    \raleway{#3}
+      \vspace{.3em}
+      \columnbreak
+
+      \raleway{#3}
+
+    \end{multicols}
 }
+
+
+\newcommand*\header{
+    \begin{minipage}{0.2\paperwidth}
+        \Huge{
+            \textcolor{dark}{\ralewayeb{\name}}
+        }
+    \end{minipage}
+
+    \hfill 
+      
+    \begin{minipage}{0.5\paperwidth}
+      \flushright{
+          \begin{tabular}{rl}
+              \contactline{Phone}{\phone} \\
+              \contactline{Email}{\email} \\
+              \contactline{Website}{\href{\website}{\website}} \\
+              \contactline{GitHub}{\href{https://github.com/\github}{@\github}} \\
+              \contactline{LinkedIn}{\href{https://linkedin.com/in/\linkedin}{/in/\linkedin}}
+          \end{tabular}
+        }
+    \end{minipage}
+}
+
+
 
 \begin{document}
 
 % background
-
 \begin{tikzpicture}[remember picture,overlay]
-  \fill[mygray] (current page.south west) rectangle ([xshift=-\amount]current page.north east);
+  \fill[mygray] (current page.north west) rectangle ([yshift=-4cm]current page.north east);
+  \node at ([yshift=-2cm,xshift=0.5\textwidth+2cm]current page.north west){\noindent\makebox[\textwidth]{\header}};
 \end{tikzpicture}
 
-% Side Bar
-
-\begin{textblock}{58.5}(6,7.7)
-    \name{Christoph}{Sonntag}
-
-    %\tagline{Student \& Developer}
-
-    \section{About me}
-
-    \color{dark}
-
-    Started a company at sixteen, working on contract-based web development and offering engineering, development as well as deployment and CI. 
-    This eventually led me to pursue a degree in Internet Computing. During my studies, my interests shifted more towards 
-    data science and deep learning, which was luckily also possible to follow up by choosing several courses offered by my university. I'm now a graduate student in Computer Science with a focus on data science 
-    topics and interested in making machine learning models used in decision making processes more explainable and interpretable.
-
-    \vspace{.9em}
-
-    \section{Contact}
-
-    \renewcommand{\arraystretch}{1.1}
-
-    \begin{tabular}{rl}
-        \contactline{Location}{Vienna, Austria} \\
-        \contactline{Phone}{(+49) 151 70097024} \\
-        \contactline{Email}{cv@snn.tg} \\
-        \contactline{Website}{\href{https://christoph.snn.tg}{https://christoph.snn.tg}} \\
-        \contactline{GitHub}{\href{https://github.com/chrisonntag}{@chrisonntag}} \\
-        \contactline{LinkedIn}{\href{https://linkedin.com/in/christophsonntag}{/in/christophsonntag}}
-    \end{tabular}
-
-    \vspace{.9em}
-
-    \section{Skills \& Tools}
-
-    \skill{Python}{4.25}
-
-    \skill{Java}{3}
-
-    \skill{Javascript, PHP}{4}
-
-    \skill{TensorFlow, NumPy, Pandas, Matplotlib}{2.75}
-
-    \skill{Django/Flask/Spring Boot}{3.5}
-
-    \skill{Docker, Jenkins}{2.5}
-
-    \skill{Git, Unix}{3.5}
-
-
-\end{textblock}
 
 % Main
 
 \vspace{-25pt}  % Change this value to adjust the position of the right
+
+
+%\tagline{Student \& Developer}
+
+%\section{About me}
+
+
+%Started a company at sixteen, working on contract-based web development and offering engineering, development as well as deployment and CI. 
+%This eventually led me to pursue a degree in Internet Computing. During my studies, my interests shifted more towards 
+%data science and deep learning, which was luckily also possible to follow up by choosing several courses offered by my university. I'm now a graduate student in Computer Science with a focus on data science 
+%topics and interested in making machine learning models used in decision making processes more explainable and interpretable.
+
+%\vspace{.9em}
+
+
 \section{Education}
 
 \block{University of Vienna, Austria}
-{M.Sc. Computer Science, Major Data Science | Expected 2023}
+{M.Sc. Computer Science \\ Expected 2023}
 {
     \begin{itemize}[-]
-      \item Projects on Data Analysis (Python, Tensorflow), Parallelization, Natural Language Processing (nltk) and Visual Data Analysis (three.js, Tableau) 
-      \item Current interests include Explainable and Interpretable Machine Learning Models and the structure of Latent Spaces based on Variational Autoencoders.
+      \item Projects on Data Analysis and Deep Learning (Python, Tensorflow), Cloud and Edge Computing (GCP, AWS), Visual Data Analysis (three.js, Tableau) and Security
+      \item Current interests include Variational Autoencoders, Backdoor Attacks on Large Language Models and Cloud Computing
     \end{itemize}
 }
 
-\vspace{.5em}
 
 \block{University of Passau, Germany}
-{B.Sc. Internet Computing, GPA: 2.7 (Germany 2.3) | 2020}
+{B.Sc. Internet Computing \\ 2020}
 {
     \begin{itemize}[-]
-      \item Dissertation on residual neural networks, enabling very deep neural network architectures (implemented in Python using Tensorflow)
+      \item Thesis on residual neural networks, enabling very deep neural network architectures (implemented in Python using Tensorflow)
       \item Projects on web microservices using Spring and Docker
       %\item Relevant coursework: Pattern Recognition and Time Series Analysis, Distributed Systems, System Security, Software Engineering, Algorithms and Datastructures
     \end{itemize}
 }
 
-\vspace{.9em}
+\vspace{.5em}
 
 \section{Work Experience}
 
-\block{Software Engineer, Full-Stack Developer}
-{On-contract, Germany (remote, part-time) | June 2013 - }
+\block{Software Engineer}
+{On-contract, Germany \\ June 2013 - \\ Remote, Part-time}
 {
     \begin{itemize}[-]
         %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
@@ -231,25 +233,26 @@
     \end{itemize}
 }
 
-\vspace{.5em}
 
 \block{Lecturer}
-{ZKK, University of Passau, Germany | October 2017 - July 2018 }
+{ZKK, University of Passau, Germany \\ October 2017 - July 2018 }
 {
     \begin{itemize}[-]
-        \item Taught weekend courses introducing students to programming and programming with Python
-        \item Responsible for course planning and teaching of classes (4.47 average score on a scale from 1-5, worst to best)
+        \item Weekend courses introducing students to programming with Python
+        \item Responsible for course planning and teaching of classes (4.47 avg. score on a scale from 1-5, worst to best)
     \end{itemize}
 }
 
-\vspace{.9em}
+\vspace{.5em}
 
 \section{Programming Expertise}
 
 \ralewaysb Smart Metering App for Community Houses, \raleway contract-based \hfill 2018
+\vspace{.5em}
 \begin{itemize}[-]
   \item Dockerized Django application using Redis as a message broker for scheduling requests to connected meter on a bus using the MODBUS protocol
 \end{itemize}
+\vspace{.5em}
 
 %\ralewaysb Instagram Scraping and Rating Robot \raleway \hfill 2020
 %\begin{itemize}[-]
@@ -257,8 +260,9 @@
 %\end{itemize}
 
 \ralewaysb Software Engineering and Algorithms, Lecture Courses at University \raleway 
+\vspace{.5em}
 \begin{itemize}[-]
-  \item Data Analysis \& Data Mining (Python, Tensorflow, Jupyter), Functional Programming (Haskell and Scala), Advanced Software Engineering (Java, Spring, Docker), Parallel Architectures (OpenMP, OpenCL), Computer Architecture (MIPS)
+  \item Data Analysis \& Data Mining (Python, Tensorflow, Jupyter), Functional Programming (Haskell and Scala), Advanced Software Engineering (Java, Spring, Docker), Cloud Computing (Kubernetes, AWS, GCP)
 \end{itemize}
 
 \vspace{.9em}
@@ -266,14 +270,15 @@
 \section{Volunteer Experience}
 
 \ralewaysb Student Council Member, \raleway University of Passau \hfill 04/2016 - 10/2020
+\vspace{.5em}
 \begin{itemize}[-]
-  \item Supported students on administrative issues and as a mentor, 
-  \item Represented the student committee in two appointment processes for new professorships ("Hardware Oriented Security" and "Algorithms for Intelligent Systems")
-  \item Led a team of 12 organizers managing over 100 volunteers in a campus-wide event with a revenue of more than 20K EUR
-
+  \item Student representation in appointment processes for new professorships ("Hardware Oriented Security" and "Algorithms for Intelligent Systems")
+  \item Managemet of a campus-wide event with a revenue of more than 20K EUR and over 100 volunteers
 \end{itemize}
+\vspace{.5em}
 
 \ralewaysb Fire Department, \raleway Active Member \hfill 09/2012 - 
+\vspace{.5em}
 \begin{itemize}[-]
   \item Technical assistance and help after car accidents (special training).
   %\item Training badge for fire fighting.
@@ -281,9 +286,8 @@
 \end{itemize}
 
 
-\vspace{.9em}
-\section{Other Interests}
-Music, Analog Things,Visual Arts, Cinema, Politics, Design
+%\section{Other Interests}
+%Music, Analog Things,Visual Arts, Cinema, Politics, Design
 
 %\vspace{.9em}
 %\section{What I'm looking for}
