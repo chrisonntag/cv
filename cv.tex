@@ -16,7 +16,7 @@
 % This work consists of only the file cv.tex
 
 \documentclass{article}
-\usepackage[top=4.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage[top=4cm, bottom=1cm, left=1cm, right=1cm]{geometry}
 %\usepackage[top=.4in, bottom=.0in, left=.4in, right=0.4in,marginparwidth=2.5in]{geometry}
 \usepackage{tikz}
 \usepackage{xcolor}
@@ -26,6 +26,7 @@
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{pstricks}
+\usepackage{tabularx}
 \usepackage{amssymb}
 \usepackage{paralist}
 
@@ -50,7 +51,7 @@
 \newcommand{\amount}{5.7in}
 \setcounter{section}{-1}
 
-\linespread{1.2}
+\linespread{1.15}
 \pagenumbering{gobble}
 \renewcommand{\labelitemi}{$\blacksquare$}
 \renewenvironment{itemize}[1]{\begin{compactitem}#1}{\end{compactitem}}
@@ -78,7 +79,7 @@
 
 \newcommand*\name{Christoph Sonntag}
 \newcommand*\email{cv@snn.tg}
-\newcommand*\phone{+49 151 70097024}
+\newcommand*\phone{+43 670 5519658}
 \newcommand*\website{https://christoph.snn.tg}
 \newcommand*\github{chrisonntag}
 \newcommand*\linkedin{christophsonntag}
@@ -128,7 +129,7 @@
     \end{pspicture}
 }
 
-\setlength{\columnsep}{-5cm}
+\setlength{\columnsep}{-6cm}
 \newcommand{\block}[3]{
 
     \begin{multicols}{2}
@@ -148,21 +149,31 @@
 
 \newcommand*\header{
     \begin{minipage}{0.2\paperwidth}
-        \Huge{
+        \huge{
             \textcolor{dark}{\ralewayeb{\name}}
         }
     \end{minipage}
 
     \hfill 
-      
-    \begin{minipage}{0.5\paperwidth}
+
+    \begin{minipage}{0.3\paperwidth}
       \flushright{
           \begin{tabular}{rl}
+             \contactline{Citizenship}{German/EU}\\
               \contactline{Phone}{\phone} \\
               \contactline{Email}{\email} \\
+          \end{tabular}
+        }
+    \end{minipage}
+
+    \hfill 
+      
+    \begin{minipage}{0.35\paperwidth}
+      \flushright{
+          \begin{tabular}{rl}
               \contactline{Website}{\href{\website}{\website}} \\
               \contactline{GitHub}{\href{https://github.com/\github}{@\github}} \\
-              \contactline{LinkedIn}{\href{https://linkedin.com/in/\linkedin}{/in/\linkedin}}
+              \contactline{LinkedIn}{\href{https://linkedin.com/in/\linkedin}{linkedin.com/in/\linkedin}}
           \end{tabular}
         }
     \end{minipage}
@@ -174,8 +185,8 @@
 
 % background
 \begin{tikzpicture}[remember picture,overlay]
-  \fill[mygray] (current page.north west) rectangle ([yshift=-4cm]current page.north east);
-  \node at ([yshift=-2cm,xshift=0.5\textwidth+2cm]current page.north west){\noindent\makebox[\textwidth]{\header}};
+  \fill[mygray] (current page.north west) rectangle ([yshift=-3.5cm]current page.north east);
+  \node at ([yshift=-1.8cm,xshift=0.5\textwidth+1cm]current page.north west){\noindent\makebox[\textwidth]{\header}};
 \end{tikzpicture}
 
 
@@ -197,93 +208,114 @@
 %\vspace{.9em}
 
 
+\section{Skills}
+\vspace{.5em}
+\begin{tabularx}{\textwidth}{@{} p{6.5cm} l @{} }
+    \contactline{Data Analysis}{Tensorflow, numpy, seaborn, Flower, PyTorch}\\
+    \contactline{Server-Side}{Python, Java (Spring), Scala, PHP, JavaScript (TypeScript, node.js)}\\
+    \contactline{Client-Side}{Vue.js, React}\\
+    \contactline{Infrastructure}{PostgreSQL, Redis, Docker, AWS EC2;S3;Sagemaker, MODBUS}\\
+    \contactline{Languages}{English (full proficiency), German (native), French (basic)}
+\end{tabularx}
+\vspace{.5em}
+
+
 \section{Education}
 
-\block{University of Vienna, Austria}
-{M.Sc. Computer Science \\ Expected 2023}
+\block{M.Sc. Computer Science}
+{\href{https://univie.ac.at}{University of Vienna}, Austria \\ Mar 2024}
 {
     \begin{itemize}[-]
-      \item Projects on Data Analysis and Deep Learning (Python, Tensorflow), Cloud and Edge Computing (GCP, AWS), Visual Data Analysis (three.js, Tableau) and Security
-      \item Current interests include Variational Autoencoders, Backdoor Attacks on Large Language Models and Cloud Computing
+      \item Research on Backdoor Attacks on Language Models in Federated Learning, Disentanglement with Variational Autoencoders and \href{https://github.com/chrisonntag/servitization-of-products}{Digital Humanism}
+      \item Projects on Data Analysis and Deep Learning (Python, Tensorflow, Jupyter), \href{https://github.com/chrisonntag/adaptable-chat-summarization}{Cloud and Edge Computing} (GCP, AWS), Visual Data Analysis (three.js, Tableau) and Security
     \end{itemize}
 }
 
 
-\block{University of Passau, Germany}
-{B.Sc. Internet Computing \\ 2020}
+\block{B.Sc. Internet Computing}
+{\href{https://www.fim.uni-passau.de/}{University of Passau}, Germany \\ Dec 2020}
 {
     \begin{itemize}[-]
-      \item Thesis on residual neural networks, enabling very deep neural network architectures (implemented in Python using Tensorflow)
-      \item Projects on web microservices using Spring and Docker
+      \item Thesis on ResNets, enabling very deep neural network architectures (implemented in Python using Tensorflow)
+      \item Projects on web microservices using Spring, Docker and Kubernetes
       %\item Relevant coursework: Pattern Recognition and Time Series Analysis, Distributed Systems, System Security, Software Engineering, Algorithms and Datastructures
     \end{itemize}
 }
 
-\vspace{.5em}
+%\vspace{.5em}
 
 \section{Work Experience}
 
 \block{Software Engineer}
-{On-contract, Germany \\ June 2013 - \\ Remote, Part-time}
+{\href{https://christophsonntag.com}{Self-employed}, Germany \\ Jun 2013 –}
 {
     \begin{itemize}[-]
         %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
-        \item Web Development with Python/Django, PHP, node.js, Docker and Jenkins
+        \item Software Development with Python/Django, PHP, node.js, redis, Docker and Jenkins
         \item Engineering and Implementation of contract-based projects
     \end{itemize}
 }
 
-
-\block{Lecturer}
-{ZKK, University of Passau, Germany \\ October 2017 - July 2018 }
+\block{Software Developer}
+{\href{https://dialogsued.de/}{dialog sued}, Munich, Germany \\ Jan 2016 – Oct 2020}
 {
     \begin{itemize}[-]
-        \item Weekend courses introducing students to programming with Python
-        \item Responsible for course planning and teaching of classes (4.47 avg. score on a scale from 1-5, worst to best)
+        %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
+        \item Web Development with PHP and Typescript
+        \item Implementation of WordPress themes and plugins or websites from scratch.
     \end{itemize}
 }
 
+\block{Lecturer}
+{\href{https://www.uni-passau.de/zkk/}{ZKK, University of Passau}, Germany \\ Oct 2017 – Jul 2018 }
+{
+    \begin{itemize}[-]
+        \item Block-courses introducing students to \href{https://www.uni-passau.de/fileadmin/dokumente/ZKK/Newsletter/ZKK_Broschuere_SoSe_2018_online.pdf}{Programming with Python}
+        \item Responsible for course development and teaching of classes (rated 4.47 avg. score on a scale from 1-5, worst to best)
+    \end{itemize}
+}
+
+%\vspace{.5em}
+
+
+
+\section{Projects}
 \vspace{.5em}
 
-\section{Programming Expertise}
-
-\ralewaysb Smart Metering App for Community Houses, \raleway contract-based \hfill 2018
+\ralewaysb \href{https://github.com/mmetering}{MMetering}, Smart Metering App for Community Houses, \raleway contract-based \hfill 2018
 \vspace{.5em}
 \begin{itemize}[-]
   \item Dockerized Django application using Redis as a message broker for scheduling requests to connected meter on a bus using the MODBUS protocol
 \end{itemize}
 \vspace{.5em}
 
-%\ralewaysb Instagram Scraping and Rating Robot \raleway \hfill 2020
-%\begin{itemize}[-]
-%  \item Scraping content and rating it for quality (metric learned by a ML model)
+
+\ralewaysb \href{https://github.com/chrisonntag/clossyne}{Clossyne}, Distributed key-value store using Akka and Scala \raleway \hfill 2023
+\vspace{.5em}
+\begin{itemize}[-]
+    \item Based on binary search-tress, it can be easily accessed by a dictionary-based data access API and makes use the Actor model
+\end{itemize}
+
+
+\section{Further Experience}
+\vspace{.5em}
+
+\ralewaysb \href{https://sicss.io/2023/roma-tor-vergata/people}{Summer Institute of Computational Social Sciences}, \raleway Università degli Studi di Roma "Tor Vergata" \hfill Jun 2023\\
+\ralewaysb Elected Student Representative, \raleway University of Passau \hfill Apr 2016 – Aug 2020
+%\begin{itemize}[]
+  %\item Student representation in appointment processes for new professorships ("Hardware Oriented Security" and "Algorithms for Intelligent Systems")
+  %\item Managemet of a campus-wide event with a revenue of more than 20K EUR and over 100 volunteers
 %\end{itemize}
 
-\ralewaysb Software Engineering and Algorithms, Lecture Courses at University \raleway 
-\vspace{.5em}
-\begin{itemize}[-]
-  \item Data Analysis \& Data Mining (Python, Tensorflow, Jupyter), Functional Programming (Haskell and Scala), Advanced Software Engineering (Java, Spring, Docker), Cloud Computing (Kubernetes, AWS, GCP)
-\end{itemize}
 
-\vspace{.9em}
 
-\section{Volunteer Experience}
-
-\ralewaysb Student Council Member, \raleway University of Passau \hfill 04/2016 - 10/2020
-\vspace{.5em}
-\begin{itemize}[-]
-  \item Student representation in appointment processes for new professorships ("Hardware Oriented Security" and "Algorithms for Intelligent Systems")
-  \item Managemet of a campus-wide event with a revenue of more than 20K EUR and over 100 volunteers
-\end{itemize}
-\vspace{.5em}
-
-\ralewaysb Fire Department, \raleway Active Member \hfill 09/2012 - 
-\vspace{.5em}
-\begin{itemize}[-]
-  \item Technical assistance and help after car accidents (special training).
+%\ralewaysb Fire Department, \raleway Active Member \hfill 09/2012 - 
+%\vspace{.5em}
+%\begin{itemize}[-]
+%  \item Technical assistance and help after car accidents (special training).
   %\item Training badge for fire fighting.
-  \item Special education workshop for carrying respiratory protective equipment.
-\end{itemize}
+%  \item Special education workshop for carrying respiratory protective equipment.
+%\end{itemize}
 
 
 %\section{Other Interests}
