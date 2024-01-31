@@ -33,13 +33,12 @@
 \usepackage{xifthen}
 \usepackage{lipsum}
 \usepackage{everyshi}
-
-
+\usepackage{tikz}
 
 \usepackage[pdfauthor={Christoph Sonntag},
             pdftitle={Christoph Sonntag's Resume},
-            pdfkeywords={Machine Learning, Autoencoders, Latent Space, Artificial Intelligence, Data Mining, Web Development, Software Engineer, Music, Guitar}]{hyperref}
-\usepackage{hyperref}
+            pdfsubject={Recent computer science graduate with skills in building, training, evaluating and deploying deep learning models. Multiple years of hands-on experience consulting, building and maintaining software products in the web. Focusing on trustworthy AI with topics in Explainable and Interpretable Machine Learning, Distributed ML and Digital Humanism. Seeking to use my experience and research interests professionally.},
+            pdfkeywords={Trustworthy Artificial Intelligence, NLP, Data Mining, Web Development, Software Engineer, Music, Analog}]{hyperref}
 
 \definecolor{mygray}{gray}{0.95}
 \definecolor{lightdark}{gray}{0.55}
@@ -57,6 +56,33 @@
 \renewenvironment{itemize}[1]{\begin{compactitem}#1}{\end{compactitem}}
 
 % Helpers
+
+% Symbol Source: https://tex.stackexchange.com/questions/99316/symbol-for-external-links
+\newcommand{\ExternalLink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+        \begin{scope}[x=1ex, y=1ex]
+            \clip (-0.1,-0.1) 
+                --++ (-0, 1.2) 
+                --++ (0.6, 0) 
+                --++ (0, -0.6) 
+                --++ (0.6, 0) 
+                --++ (0, -1);
+            \path[draw, 
+                line width = 0.5, 
+                rounded corners=0.5] 
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) 
+            -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) 
+            -- (1, 1) -- (1, 0.6);
+        }
+    }
+
+
+% Redefine hyperref with a link symbol
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\,\ExternalLink}}
 
 \newcommand\twodigits[1]{%
    \ifnum#1<10 0#1\else #1\fi
@@ -159,9 +185,9 @@
     \begin{minipage}{0.3\paperwidth}
       \flushright{
           \begin{tabular}{rl}
-             \contactline{Citizenship}{German/EU}\\
-              \contactline{Phone}{\phone} \\
               \contactline{Email}{\email} \\
+              \contactline{Phone}{\phone} \\
+             \contactline{Citizenship}{German/EU}\\
           \end{tabular}
         }
     \end{minipage}
@@ -197,13 +223,16 @@
 
 %\tagline{Student \& Developer}
 
-%\section{About me}
-
+\section{Career Objective}
 
 %Started a company at sixteen, working on contract-based web development and offering engineering, development as well as deployment and CI. 
 %This eventually led me to pursue a degree in Internet Computing. During my studies, my interests shifted more towards 
 %data science and deep learning, which was luckily also possible to follow up by choosing several courses offered by my university. I'm now a graduate student in Computer Science with a focus on data science 
 %topics and interested in making machine learning models used in decision making processes more explainable and interpretable.
+
+Recent computer science graduate with skills in building, training, evaluating and deploying deep learning models. Multiple years of hands-on experience consulting, building and maintaining software products in the web. Focusing on trustworthy AI with topics in Explainable and Interpretable Machine Learning, Distributed ML and Digital Humanism. Seeking to use my experience and research interests professionally. 
+
+
 
 %\vspace{.9em}
 
@@ -211,10 +240,9 @@
 \section{Skills}
 \vspace{.5em}
 \begin{tabularx}{\textwidth}{@{} p{6.5cm} l @{} }
-    \contactline{Data Analysis}{Tensorflow, numpy, seaborn, Flower, PyTorch}\\
-    \contactline{Server-Side}{Python, Java (Spring), Scala, PHP, JavaScript (TypeScript, node.js)}\\
-    \contactline{Client-Side}{Vue.js, React}\\
-    \contactline{Infrastructure}{PostgreSQL, Redis, Docker, AWS EC2;S3;Sagemaker, MODBUS}\\
+    \contactline{Data Science/Machine Learning}{TensorFlow, NumPy, Seaborn, Jupyter, Flower, NLTK}\\
+    \contactline{Programming}{Python, Java, Scala, PHP, JavaScript (TypeScript, node.js, Vue.js, React)}\\
+    \contactline{Backend and Infrastructure}{PostgreSQL, Redis, Docker, AWS EC2;S3;Sagemaker, MODBUS}\\
     \contactline{Languages}{English (full proficiency), German (native), French (basic)}
 \end{tabularx}
 \vspace{.5em}
@@ -223,21 +251,21 @@
 \section{Education}
 
 \block{M.Sc. Computer Science}
-{\href{https://univie.ac.at}{University of Vienna}, Austria \\ Mar 2024}
+{\href{https://univie.ac.at}{University of Vienna}, Austria, Mar 2024}
 {
     \begin{itemize}[-]
-      \item Research on Backdoor Attacks on Language Models in Federated Learning, Disentanglement with Variational Autoencoders and \href{https://github.com/chrisonntag/servitization-of-products}{Digital Humanism}
-      \item Projects on Data Analysis and Deep Learning (Python, Tensorflow, Jupyter), \href{https://github.com/chrisonntag/adaptable-chat-summarization}{Cloud and Edge Computing} (GCP, AWS), Visual Data Analysis (three.js, Tableau) and Security
+      \item Research on Federated Learning, NLP, \href{https://github.com/chrisonntag/variational-latent-disentanglement}{Explainable and Interpretable ML}, \href{https://github.com/chrisonntag/adaptable-chat-summarization}{Cloud and Edge Computing} and \href{https://github.com/chrisonntag/servitization-of-products}{Digital Humanism}
+      %\item Projects on Data Analysis, NLP and Deep Learning, \href{https://github.com/chrisonntag/adaptable-chat-summarization}{Cloud and Edge Computing} (GCP, AWS), Visual Data Analysis (three.js, Tableau) and Security: \href{https://github.com/chrisonntag/clossyne}{Clossyne}, Distributed key-value store using Akka and Scala 
     \end{itemize}
 }
 
 
 \block{B.Sc. Internet Computing}
-{\href{https://www.fim.uni-passau.de/}{University of Passau}, Germany \\ Dec 2020}
+{\href{https://www.fim.uni-passau.de/}{University of Passau}, Germany, Dec 2020}
 {
     \begin{itemize}[-]
       \item Thesis on ResNets, enabling very deep neural network architectures (implemented in Python using Tensorflow)
-      \item Projects on web microservices using Spring, Docker and Kubernetes
+      %\item Projects on web microservices using Spring, Docker and Kubernetes
       %\item Relevant coursework: Pattern Recognition and Time Series Analysis, Distributed Systems, System Security, Software Engineering, Algorithms and Datastructures
     \end{itemize}
 }
@@ -246,13 +274,30 @@
 
 \section{Work Experience}
 
-\block{Software Engineer}
-{\href{https://christophsonntag.com}{Self-employed}, Germany \\ Jun 2013 –}
+\block{Student Researcher}
+{SBA Research, Vienna, Austria \\ Oct 2023 - Mar 2024}
 {
     \begin{itemize}[-]
-        %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
-        \item Software Development with Python/Django, PHP, node.js, redis, Docker and Jenkins
-        \item Engineering and Implementation of contract-based projects
+      \item Research for my master's thesis that deals with backdoor attacks on NLP models in Federated Learning, a distributed ML approach of collaboratively training a joint model on the union of multiple client datasets
+    \end{itemize}
+}
+
+%\block{Software Engineer}
+%{\href{https://christophsonntag.com}{Freelance}, Germany \\ Jun 2013 –}
+%{
+%    \begin{itemize}[-]
+%        %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
+%        %\item Consulting and Software Development: \href{https://github.com/mmetering}{MMetering}, Smart Metering App for Community Houses
+%        \item Engineering and Implementation of contract-based projects for more than 10 different clients on >20 projects.
+%    \end{itemize}
+%}
+
+\block{Lecturer}
+{\href{https://www.uni-passau.de/zkk/}{ZKK, University of Passau}, Germany \\ Oct 2017 – Jul 2018 }
+{
+    \begin{itemize}[-]
+        \item Designed and gave the course \href{https://www.uni-passau.de/fileadmin/dokumente/ZKK/Newsletter/ZKK_Broschuere_SoSe_2018_online.pdf}{"Programmieren: Grundkurs"} (4.47/5 average rating), which is still held today. 
+        \item Introduced students to programming concepts and programming with Python.
     \end{itemize}
 }
 
@@ -260,18 +305,9 @@
 {\href{https://dialogsued.de/}{dialog sued}, Munich, Germany \\ Jan 2016 – Oct 2020}
 {
     \begin{itemize}[-]
-        %\item Data Mining and Warehousing, automating processes in energy billing with Python, Django, Redis, Docker and Jenkins (\href{https://mmetering.chrisonntag.com/}{MMetering})
-        \item Web Development with PHP and Typescript
-        \item Implementation of WordPress themes and plugins or websites from scratch.
-    \end{itemize}
-}
-
-\block{Lecturer}
-{\href{https://www.uni-passau.de/zkk/}{ZKK, University of Passau}, Germany \\ Oct 2017 – Jul 2018 }
-{
-    \begin{itemize}[-]
-        \item Block-courses introducing students to \href{https://www.uni-passau.de/fileadmin/dokumente/ZKK/Newsletter/ZKK_Broschuere_SoSe_2018_online.pdf}{Programming with Python}
-        \item Responsible for course development and teaching of classes (rated 4.47 avg. score on a scale from 1-5, worst to best)
+        \item Software Development with Python, Django, Docker, Javascipt/Typescript, jQuery, PHP.
+        %\item Implementation of WordPress themes and plugins or websites from scratch.
+        \item Full responsibility of software development on most projects.
     \end{itemize}
 }
 
@@ -282,10 +318,10 @@
 \section{Projects}
 \vspace{.5em}
 
-\ralewaysb \href{https://github.com/mmetering}{MMetering}, Smart Metering App for Community Houses, \raleway contract-based \hfill 2018
+\ralewaysb \href{https://github.com/mmetering}{MMetering}, Smart Metering App for Community Houses, \raleway client project \hfill 2018
 \vspace{.5em}
 \begin{itemize}[-]
-  \item Dockerized Django application using Redis as a message broker for scheduling requests to connected meter on a bus using the MODBUS protocol
+  \item Dockerized Django application for scheduling requests to connected meter and electrical charging stations using the MODBUS protocol and Redis as a message broker. Resulted in an estimated 12\% reduction in electricity costs.
 \end{itemize}
 \vspace{.5em}
 
@@ -293,15 +329,21 @@
 \ralewaysb \href{https://github.com/chrisonntag/clossyne}{Clossyne}, Distributed key-value store using Akka and Scala \raleway \hfill 2023
 \vspace{.5em}
 \begin{itemize}[-]
-    \item Based on binary search-tress, it can be easily accessed by a dictionary-based data access API and makes use of the Actor model
+  \item Based on binary search-tress, it can be easily accessed by a Python API and makes use of the \href{https://doc.akka.io/docs/akka/current/typed/actors.html}{Actor} model
 \end{itemize}
 
 
 \section{Further Experience}
 \vspace{.5em}
 
-\ralewaysb \href{https://sicss.io/2023/roma-tor-vergata/people}{Summer Institute of Computational Social Sciences}, \raleway Università degli Studi di Roma "Tor Vergata" \hfill Jun 2023\\
+\ralewaysb \href{https://sicss.io/2023/roma-tor-vergata/people}{Summer Institute of Computational Social Sciences}, \raleway Università degli Studi di Roma "Tor Vergata" \hfill Jun 2023
+\begin{itemize}[-]
+    \item Topics on Trustworthy AI, Research Ethics and NLP
+\end{itemize}
 \ralewaysb Elected Student Representative, \raleway University of Passau \hfill Apr 2016 – Aug 2020
+\begin{itemize}[-]
+    \item Team Lead, managing 100 volunteers in campus-wide event with >20k revenue
+\end{itemize}
 %\begin{itemize}[]
   %\item Student representation in appointment processes for new professorships ("Hardware Oriented Security" and "Algorithms for Intelligent Systems")
   %\item Managemet of a campus-wide event with a revenue of more than 20K EUR and over 100 volunteers
